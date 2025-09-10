@@ -17,6 +17,7 @@
             background-color: #f7f9fc;
             color: #555;
             text-align: center;
+            overflow-x: hidden;
         }
         .banner {
             background: linear-gradient(135deg, #a2d2ff, #ffafcc);
@@ -35,7 +36,7 @@
         }
         .container {
             max-width: 600px;
-            margin: -30px auto 30px auto;
+            margin: -30px auto 0 auto;
             background: white;
             padding: 20px 30px;
             border-radius: 15px;
@@ -116,6 +117,90 @@
         .status-success { background-color: #d4edda; color: #155724; }
         .status-error { background-color: #f8d7da; color: #721c24; }
         .hidden { display: none; }
+        
+        /* --- ÁREA BAIXA (NUVENS E PRESENTES) --- */
+        .bottom-section {
+            background: linear-gradient(to top, #e0f2ff 60%, #f7f9fc 100%); /* Fundo azul claro suave */
+            position: relative;
+            padding-top: 80px;
+            padding-bottom: 50px;
+            margin-top: -55px;
+            z-index: 1;
+        }
+        .clouds-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 110px;
+            overflow: hidden;
+        }
+
+        /* --- BLOCO CSS DA NUVEM ATUALIZADO --- */
+        .cloud {
+            /* Esta é a base da nuvem, um retângulo arredondado */
+            width: 200px;
+            height: 60px;
+            background: #fff;
+            border-radius: 60px;
+            box-shadow: 0 8px 5px rgba(0, 0, 0, 0.08);
+            position: absolute;
+        }
+
+        /* Estes são os "gomos" da nuvem, criados com CSS */
+        .cloud:before, .cloud:after {
+            content: '';
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            /* Z-index negativo para os gomos ficarem ligeiramente atrás da base */
+            z-index: -1;
+        }
+
+        .cloud:before {
+            /* Gomo maior da esquerda */
+            width: 100px;
+            height: 100px;
+            top: -50px; /* Metade da sua altura para cima */
+            left: 20px;
+        }
+
+        .cloud:after {
+            /* Gomo maior da direita */
+            width: 120px;
+            height: 120px;
+            top: -65px; /* Metade da sua altura para cima */
+            right: 25px;
+        }
+        
+        /* Posicionamento de cada nuvem */
+        .cloud-a { top: 35px; left: 5%; transform: scale(0.8); }
+        .cloud-b { top: 14px; left: 30%; transform: scale(1.1); }
+        .cloud-c { top: 30px; right: 20%; transform: scale(1); }
+        .cloud-d { top: 60px; right: 4%; transform: scale(0.7); }
+        
+        .gifts-section {
+            color: #e06196;
+            font-size: 1.2em;
+            text-shadow: 0 1px 0 #fff;
+        }
+        .gifts-section h3 {
+            color: #6684e0;
+            font-family: 'Pacifico', cursive;
+            font-size: 1.7em;
+            margin-bottom: 10px;
+            margin-top: 0;
+            text-shadow: none;
+        }
+        .gifts-section p {
+            margin: 0;
+            color: #f05a99;
+            font-family: 'Pacifico', cursive;
+            font-size: 1.3em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            line-height: 1.4;
+        }
     </style>
 </head>
 <body>
@@ -130,14 +215,13 @@
         
         <p class="info">
             É com muita alegria que convidamos você para partilhar este momento tão especial nas nossas vidas.
-            Junte-se a <strong>Priscila Silva e Renato Sousa</strong> para descobrir se o nosso bebê é um menino ou uma menina!
+            Junte-se a <strong>Priscila e Renato</strong> para descobrir se o nosso bebê é um menino ou uma menina!
         </p>
 
         <p class="info">
             <strong>Data:</strong> Sábado, 20 de Setembro de 2025<br>
             <strong>Hora:</strong> 16:00<br>
-            <strong>Local:</strong> Salão de Festas xxxx<br>
-            <strong>Endereço:</strong> Rua xxxxxxx
+            <strong>Local:</strong> Salão de Festas da Vovó - Rua da Felicidade, 123
         </p>
 
         <form id="rsvp-form">
@@ -156,9 +240,6 @@
                         <option value="3">3 Adultos</option>
                         <option value="4">4 Adultos</option>
                         <option value="5">5 Adultos</option>
-                        <option value="5">6 Adultos</option>
-                        <option value="5">7 Adultos</option>
-                        <option value="5">8 Adultos</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -170,9 +251,6 @@
                         <option value="3">3 Crianças</option>
                         <option value="4">4 Crianças</option>
                         <option value="5">5 Crianças</option>
-                        <option value="5">6 Crianças</option>
-                        <option value="5">7 Crianças</option>
-                        <option value="5">8 Crianças</option>
                     </select>
                 </div>
             </div>
@@ -186,21 +264,32 @@
         </footer>
     </div>
 
+    <div class="bottom-section">
+        <div class="clouds-container">
+            <div class="cloud cloud-a"></div>
+            <div class="cloud cloud-b"></div>
+            <div class="cloud cloud-c"></div>
+            <div class="cloud cloud-d"></div>
+        </div>
+        <div class="gifts-section">
+            <h3>--- Sugestão de Presente ---</h3>
+            <p>Fraldas Descartáveis<br>P, M ou G</p>
+        </div>
+    </div>
+
 <script>
     const form = document.getElementById('rsvp-form');
     const submitButton = document.getElementById('submitButton');
     const statusDiv = document.getElementById('status');
-
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-
-        // SUBSTITUA PELA URL DO SEU SCRIPT
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzLgHs6bGbxicW3guiiDV8-0m9mNCtWXzfJLdVkC0EooNYk5BsVvhr0wm171IOxRYBM/exec';
+        
+        const scriptURL = 'COLE_AQUI_A_URL_DO_SEU_APPS_SCRIPT';
         const formData = new FormData(form);
-
+        
         submitButton.disabled = true;
         submitButton.textContent = 'Aguarde...';
-
+        
         fetch(scriptURL, { method: 'POST', body: formData })
             .then(response => response.json())
             .then(data => {
