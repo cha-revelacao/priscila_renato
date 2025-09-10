@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chá de Revelação - [Nome da Mãe] e [Nome do Pai]</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f9fc;
+            color: #555;
+            text-align: center;
+        }
+        .banner {
+            background: linear-gradient(135deg, #a2d2ff, #ffafcc);
+            color: white;
+            padding: 80px 20px 40px 20px;
+        }
+        .banner h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3.5em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        .banner p {
+            font-size: 1.2em;
+            margin: 10px 0 0 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: -30px auto 30px auto;
+            background: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 2;
+        }
+        h2 {
+            color: #333;
+            font-weight: 700;
+        }
+        .info {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        .info strong {
+            color: #ff8fab;
+        }
+        form {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px dashed #eee;
+        }
+        .form-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .form-group {
+            flex: 1;
+            text-align: left;
+        }
+        label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 8px;
+            background-color: #ff8fab;
+            color: white;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #ff6d9c;
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #888;
+        }
+        #status {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+        .status-success { background-color: #d4edda; color: #155724; }
+        .status-error { background-color: #f8d7da; color: #721c24; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="banner">
+        <h1>Fulana ou Fulano?</h1>
+        <p>Venha descobrir connosco!</p>
+    </div>
+
+    <div class="container">
+        <h2>Você está convidado para o nosso Chá de Revelação!</h2>
+        
+        <p class="info">
+            É com muita alegria que convidamos você para partilhar este momento tão especial nas nossas vidas.
+            Junte-se a <strong>Priscila Silva e Renato Sousa</strong> para descobrir se o nosso bebê é um menino ou uma menina!
+        </p>
+
+        <p class="info">
+            <strong>Data:</strong> Sábado, 20 de Setembro de 2025<br>
+            <strong>Hora:</strong> 16:00<br>
+            <strong>Local:</strong> Salão de Festas xxxx<br>
+            <strong>Endereço:</strong> Rua xxxxxxx
+        </p>
+
+        <form id="rsvp-form">
+            <h2>Confirme a sua Presença</h2>
+            <div class="form-group">
+                <label for="nome">O seu nome completo:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="adultos">Adultos (incluindo você):</label>
+                    <select id="adultos" name="adultos" required>
+                        <option value="1">1 Adulto</option>
+                        <option value="2">2 Adultos</option>
+                        <option value="3">3 Adultos</option>
+                        <option value="4">4 Adultos</option>
+                        <option value="5">5 Adultos</option>
+                        <option value="5">6 Adultos</option>
+                        <option value="5">7 Adultos</option>
+                        <option value="5">8 Adultos</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="criancas">Crianças:</label>
+                    <select id="criancas" name="criancas" required>
+                        <option value="0">Nenhuma</option>
+                        <option value="1">1 Criança</option>
+                        <option value="2">2 Crianças</option>
+                        <option value="3">3 Crianças</option>
+                        <option value="4">4 Crianças</option>
+                        <option value="5">5 Crianças</option>
+                        <option value="5">6 Crianças</option>
+                        <option value="5">7 Crianças</option>
+                        <option value="5">8 Crianças</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button type="submit" id="submitButton">Confirmar Presença</button>
+            <div id="status" class="hidden"></div>
+        </form>
+
+        <footer>
+            Sua presença é o nosso maior presente!
+        </footer>
+    </div>
+
+<script>
+    const form = document.getElementById('rsvp-form');
+    const submitButton = document.getElementById('submitButton');
+    const statusDiv = document.getElementById('status');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // SUBSTITUA PELA URL DO SEU SCRIPT
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzLgHs6bGbxicW3guiiDV8-0m9mNCtWXzfJLdVkC0EooNYk5BsVvhr0wm171IOxRYBM/exec';
+        const formData = new FormData(form);
+
+        submitButton.disabled = true;
+        submitButton.textContent = 'Aguarde...';
+
+        fetch(scriptURL, { method: 'POST', body: formData })
+            .then(response => response.json())
+            .then(data => {
+                if (data.result === 'success') {
+                    statusDiv.classList.remove('hidden', 'status-error');
+                    statusDiv.classList.add('status-success');
+                    statusDiv.textContent = 'Presença confirmada! Obrigado!';
+                    form.reset();
+                } else {
+                    throw new Error(data.message || 'Ocorreu um erro.');
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                statusDiv.classList.remove('hidden', 'status-success');
+                statusDiv.classList.add('status-error');
+                statusDiv.textContent = 'Ocorreu um erro. Por favor, tente novamente.';
+            })
+            .finally(() => {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Confirmar Presença';
+            });
+    });
+</script>
+
+</body>
+</html>
