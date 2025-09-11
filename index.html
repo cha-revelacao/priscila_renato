@@ -4,309 +4,251 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chá de Revelação - [Nome da Mãe] e [Nome do Pai]</title>
-
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <style>
+        :root {
+            --soft-pink: #ffafcc;
+            --light-pink: #fff0f6;
+            --soft-blue: #a2d2ff;
+            --text-gray: #8a8a8a;
+            --header-pink: #e06196;
+            --header-blue: #6684e0;
+            --gender-boy-blue: #4a90e2;
+            --gender-girl-pink: #e06196;
+        }
+
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #f7f9fc;
-            color: #555;
+            padding: 40px 20px;
+            color: #333;
             text-align: center;
-            overflow-x: hidden;
+            background-image: url('urso.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
         }
-        .banner {
-            background: linear-gradient(135deg, #a2d2ff, #ffafcc);
-            color: white;
-            padding: 80px 20px 40px 20px;
-        }
-        .banner h1 {
-            font-family: 'Pacifico', cursive;
-            font-size: 3.5em;
-            margin: 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-        .banner p {
-            font-size: 1.2em;
-            margin: 10px 0 0 0;
-        }
+
         .container {
-            max-width: 600px;
-            margin: -30px auto 0 auto; /* Ajustado para remover o espaço extra em baixo */
-            background: white;
-            padding: 20px 30px;
+            max-width: 450px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.95); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            position: relative;
-            z-index: 2;
         }
-        h2 {
-            color: #333;
-            font-weight: 700;
-        }
-        .info {
-            font-size: 1.1em;
-            line-height: 1.6;
-        }
-        .info strong {
-            color: #ff8fab;
-        }
-        form {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px dashed #eee;
-        }
-        .form-row {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-        .form-group {
-            flex: 1;
-            text-align: left;
-        }
-        label {
-            display: block;
-            font-weight: 700;
-            margin-bottom: 5px;
-            color: #333;
-        }
-        input, select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-sizing: border-box;
-            font-size: 1em;
-        }
-        button {
-            width: 100%;
-            padding: 15px;
-            margin-top: 10px;
-            border: none;
-            border-radius: 8px;
-            background-color: #ff8fab;
+
+        .header {
+            background: linear-gradient(135deg, var(--soft-blue), var(--soft-pink));
+            padding: 40px 20px;
             color: white;
-            font-size: 1.2em;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background-color 0.3s;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            min-height: auto;
+            position: relative; /* Essencial para o efeito */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Garante que as partículas não saiam */
         }
-        button:hover {
-            background-color: #ff6d9c;
+        
+        /* NOVO: CSS para o palco das partículas */
+        #particles-js {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Fica abaixo do texto */
         }
-        button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
+
+        .header h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3.5em; 
+            margin: 0;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
+            position: relative;
+            z-index: 2; /* Garante que o texto fique por cima das partículas */
         }
-        footer {
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: #888;
-        }
-        #status {
-            margin-top: 15px;
-            padding: 12px;
-            border-radius: 5px;
-            font-weight: 500;
-        }
+
+        .main-content { padding: 20px 30px; }
+        .main-content p { font-size: 1em; line-height: 1.6; color: var(--text-gray); }
+        .highlight-boy { color: var(--gender-boy-blue); font-weight: 700; }
+        .highlight-girl { color: var(--gender-girl-pink); font-weight: 700; }
+
+        .event-details { display: flex; align-items: center; justify-content: center; margin: 30px 0; gap: 20px; }
+        .event-date .day { font-size: 3em; font-weight: 700; color: var(--header-pink); line-height: 1; }
+        .event-date .month-year { font-size: 1em; color: var(--text-gray); text-transform: uppercase; }
+        .details-divider { width: 2px; height: 60px; background-color: #eee; }
+        .event-location { text-align: left; font-size: 1.1em; line-height: 1.5; color: #666; }
+
+        form { margin-top: 30px; padding-top: 20px; border-top: 2px dashed #eee; }
+        h2 { font-family: 'Pacifico', cursive; color: var(--header-blue); font-size: 2em; }
+        .form-row { display: flex; gap: 15px; }
+        .form-group { flex: 1; text-align: left; margin-bottom: 15px; }
+        label { display: block; font-weight: 500; margin-bottom: 5px; color: #555; font-size: 0.9em; }
+        input, select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 1em; }
+        button { width: 100%; padding: 15px; margin-top: 10px; border: none; border-radius: 8px; background-color: var(--header-pink); color: white; font-size: 1.2em; font-weight: 700; cursor: pointer; }
+        
+        #status { margin-top: 15px; padding: 12px; border-radius: 5px; font-weight: 500; }
         .status-success { background-color: #d4edda; color: #155724; }
         .status-error { background-color: #f8d7da; color: #721c24; }
         .hidden { display: none; }
         
-        /* --- SECÇÃO DE PRESENTES (RODAPÉ) --- */
         .bottom-section {
-            background: #f0f8ff; /* Fundo azul bebé suave */
-            padding: 40px 20px;
-            margin-top: 20px;
+            background: var(--light-pink);
+            padding: 30px 20px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
         }
-        
         .gifts-section h3 {
-            color: #6684e0;
             font-family: 'Pacifico', cursive;
+            color: var(--header-blue);
             font-size: 1.7em;
-            margin-bottom: 15px;
-            margin-top: 0;
-            text-shadow: none;
+            margin: 0 0 10px 0;
         }
         .gifts-section p {
             margin: 0;
-            color: #f05a99;
-            font-size: 1.3em;
-            font-weight: bold;
-            letter-spacing: 1px;
-            line-height: 1.4;
-        }
-
-        /* --- ESTILOS PARA INTERATIVIDADE --- */
-        .animate-on-scroll {
-            opacity: 0; /* Começa invisível */
-        }
-        #contador-convidados {
-            margin: 15px 0 5px 0;
-            padding: 10px;
-            background-color: #f0f8ff;
-            border-radius: 8px;
+            color: var(--header-pink);
             font-size: 1.1em;
-            color: #0056b3;
-            text-align: center;
             font-weight: 500;
-            transition: background-color 0.3s;
+            line-height: 1.5;
         }
     </style>
 </head>
 <body>
 
-    <div class="banner">
-        <h1 class="animate-on-scroll">Menino ou Menina?</h1>
-        <p class="animate-on-scroll">Venha descobrir connosco!</p>
-    </div>
+    <div class="container">
+        <div class="header">
+            <div id="particles-js"></div>
+            <h1>Chá Revelação</h1>
+        </div>
 
-    <div class="container animate-on-scroll">
-        <h2>Você está convidado para o nosso Chá de Revelação!</h2>
-        
-        <p class="info animate-on-scroll">
-            É com muita alegria que convidamos você para partilhar este momento tão especial nas nossas vidas.
-            Junte-se a <strong>[Nome da Mãe] e [Nome do Pai]</strong> para descobrir se o nosso bebé é um menino ou uma menina!
-        </p>
+        <div class="main-content">
+            <p>Papai e Mamãe estão ansiosos pela minha chegada!</p>
+            <p>E agora todos querem saber se sou <span class="highlight-boy">Menino</span> ou <span class="highlight-girl">Menina</span>!</p>
 
-        <p class="info animate-on-scroll">
-            <strong>Data:</strong> Sábado, 20 de Setembro de 2025<br>
-            <strong>Hora:</strong> 16:00<br>
-            <strong>Local:</strong> Salão de Festas da Vovó - Rua da Felicidade, 123
-        </p>
-
-        <form id="rsvp-form" class="animate-on-scroll">
-            <h2>Confirme a sua Presença</h2>
-            <div class="form-group">
-                <label for="nome">O seu nome completo:</label>
-                <input type="text" id="nome" name="nome" required>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="adultos">Adultos (incluindo você):</label>
-                    <select id="adultos" name="adultos" required>
-                        <option value="1">1 Adulto</option>
-                        <option value="2">2 Adultos</option>
-                        <option value="3">3 Adultos</option>
-                        <option value="4">4 Adultos</option>
-                        <option value="5">5 Adultos</option>
-                    </select>
+            <div class="event-details">
+                <div class="event-date">
+                    <div class="day">05</div>
+                    <div class="month-year">OUTUBRO 2025</div>
                 </div>
-                <div class="form-group">
-                    <label for="criancas">Crianças:</label>
-                    <select id="criancas" name="criancas" required>
-                        <option value="0">Nenhuma</option>
-                        <option value="1">1 Criança</option>
-                        <option value="2">2 Crianças</option>
-                        <option value="3">3 Crianças</option>
-                        <option value="4">4 Crianças</option>
-                        <option value="5">5 Crianças</option>
-                    </select>
+                <div class="details-divider"></div>
+                <div class="event-location">
+                    <strong>às 11h</strong><br>
+                    R. Caçaquera, 246 - Tatuapé<br>
+                    Espaço Maria Festeira 2
                 </div>
             </div>
 
-            <div id="contador-convidados" class="animate-on-scroll">
-                <strong>Total:</strong> 1 pessoa
+            <form id="rsvp-form">
+                <h2>Confirme a sua Presença</h2>
+                <div class="form-group">
+                    <label for="nome">O seu nome completo:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="adultos">Adultos (incluindo você):</label>
+                        <select id="adultos" name="adultos" required>
+                            <option value="1">1 Adulto</option>
+                            <option value="2">2 Adultos</option>
+                            <option value="3">3 Adultos</option>
+                            <option value="4">4 Adultos</option>
+                            <option value="5">5 Adultos</option>
+                            <option value="5">6 Adultos</option>
+                            <option value="5">7 Adultos</option>
+                            <option value="5">8 Adultos</option>
+                            <option value="5">9 Adultos</option>
+                            <option value="5">10 Adultos</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="criancas">Crianças:</label>
+                        <select id="criancas" name="criancas" required>
+                            <option value="0">Nenhuma</option>
+                            <option value="1">1 Criança</option>
+                            <option value="2">2 Crianças</option>
+                            <option value="3">3 Crianças</option>
+                            <option value="4">4 Crianças</option>
+                            <option value="5">5 Crianças</option>
+                            <option value="5">6 Crianças</option>
+                            <option value="5">7 Crianças</option>
+                            <option value="5">8 Crianças</option>
+                            <option value="5">9 Crianças</option>
+                            <option value="5">10 Crianças</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="submit" id="submitButton">Confirmar Presença</button>
+                <div id="status" class="hidden"></div>
+            </form>
+        </div>
+    
+        <div class="bottom-section">
+            <div class="gifts-section">
+                <h3>Sugestão de Presente</h3>
+                <p>Fraldas P, M ou G + Mimo</p>
+                <h5>Obs: Homens levar o que for beber</h5>
             </div>
-            
-            <button type="submit" id="submitButton">Confirmar Presença</button>
-            <div id="status" class="hidden"></div>
-        </form>
-
-        <footer class="animate-on-scroll">
-            Sua presença é o nosso maior presente!
-        </footer>
-    </div>
-
-    <div class="bottom-section animate-on-scroll">
-        <div class="gifts-section">
-            <h3>Sugestão de Presente</h3>
-            <p>Fraldas Pampers ou MamyPoko<br>RN, P, M ou G</p>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
 <script>
-    // --- LÓGICA DE INTERATIVIDADE ---
-    document.addEventListener("DOMContentLoaded", function() {
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Animação de entrada dos elementos
-        gsap.utils.toArray('.animate-on-scroll').forEach(element => {
-            gsap.fromTo(element, 
-                { opacity: 0, y: 50 }, 
-                { 
-                    opacity: 1, 
-                    y: 0, 
-                    duration: 0.8,
-                    scrollTrigger: {
-                        trigger: element,
-                        start: "top 90%",
-                        toggleActions: "play none none none"
-                    }
-                }
-            );
-        });
-
-        const adultosSelect = document.getElementById('adultos');
-        const criancasSelect = document.getElementById('criancas');
-        const contadorDiv = document.getElementById('contador-convidados');
-
-        // Função para atualizar o contador
-        function atualizarContador() {
-            const numAdultos = parseInt(adultosSelect.value) || 0;
-            const numCriancas = parseInt(criancasSelect.value) || 0;
-            const total = numAdultos + numCriancas;
-            const pessoaTexto = total === 1 ? 'pessoa' : 'pessoas';
-            contadorDiv.innerHTML = `<strong>Total:</strong> ${total} ${pessoaTexto}`;
-        }
-
-        // Adiciona os eventos para atualizar o contador
-        adultosSelect.addEventListener('change', atualizarContador);
-        criancasSelect.addEventListener('change', atualizarContador);
+    // NOVO: Configuração e inicialização do efeito de partículas
+    particlesJS('particles-js', {
+        "particles": {
+            "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+            "color": { "value": "#ffffff" },
+            "shape": { "type": "circle" },
+            "opacity": { "value": 0.5, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
+            "size": { "value": 3, "random": true, "anim": { "enable": false } },
+            "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 },
+            "move": { "enable": true, "speed": 2, "direction": "none", "out_mode": "out" }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" } },
+            "modes": { "repulse": { "distance": 100, "duration": 0.4 }, "push": { "particles_nb": 4 } }
+        },
+        "retina_detect": true
     });
-    
 
-    // --- LÓGICA DE ENVIO PARA A PLANILHA ---
+    // --- LÓGICA DE ENVIO PARA A PLANILHA (existente) ---
     const form = document.getElementById('rsvp-form');
     const submitButton = document.getElementById('submitButton');
     const statusDiv = document.getElementById('status');
-
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-
-        const scriptURL = 'COLE_AQUI_A_URL_DO_SEU_APPS_SCRIPT';
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzLgHs6bGbxicW3guiiDV8-0m9mNCtWXzfJLdVkC0EooNYk5BsVvhr0wm171IOxRYBM/exec';
         const formData = new FormData(form);
-
         submitButton.disabled = true;
         submitButton.textContent = 'Aguarde...';
-
         fetch(scriptURL, { method: 'POST', body: formData })
             .then(response => response.json())
             .then(data => {
                 if (data.result === 'success') {
-                    // Lança o confete!
-                    confetti({
-                        particleCount: 150,
-                        spread: 180,
-                        origin: { y: 0.6 }
+                    confetti({ 
+                        particleCount: 150, 
+                        spread: 180, 
+                        origin: { y: 0.6 },
+                        colors: ['#FFD700', '#FFFFFF', '#FFB6C1', '#87CEEB'],
+                        shapes: ['star', 'circle']
                     });
-
                     statusDiv.classList.remove('hidden', 'status-error');
                     statusDiv.classList.add('status-success');
                     statusDiv.textContent = 'Presença confirmada! Obrigado!';
                     form.reset();
-                    // Reseta o contador para o valor inicial
-                    document.getElementById('contador-convidados').innerHTML = '<strong>Total:</strong> 1 pessoa';
                 } else {
                     throw new Error(data.message || 'Ocorreu um erro.');
                 }
