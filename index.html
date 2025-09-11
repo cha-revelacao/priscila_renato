@@ -9,6 +9,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -36,7 +41,7 @@
         }
         .container {
             max-width: 600px;
-            margin: -30px auto 0 auto;
+            margin: -30px auto 0 auto; /* Ajustado para remover o espaço extra em baixo */
             background: white;
             padding: 20px 30px;
             border-radius: 15px;
@@ -118,113 +123,69 @@
         .status-error { background-color: #f8d7da; color: #721c24; }
         .hidden { display: none; }
         
-        /* --- ÁREA BAIXA (NUVENS E PRESENTES) --- */
+        /* --- SECÇÃO DE PRESENTES (RODAPÉ) --- */
         .bottom-section {
-            background: linear-gradient(to top, #e0f2ff 60%, #f7f9fc 100%); /* Fundo azul claro suave */
-            position: relative;
-            padding-top: 80px;
-            padding-bottom: 50px;
-            margin-top: -55px;
-            z-index: 1;
-        }
-        .clouds-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 110px;
-            overflow: hidden;
-        }
-
-        /* --- BLOCO CSS DA NUVEM ATUALIZADO --- */
-        .cloud {
-            /* Esta é a base da nuvem, um retângulo arredondado */
-            width: 200px;
-            height: 60px;
-            background: #fff;
-            border-radius: 60px;
-            box-shadow: 0 8px 5px rgba(0, 0, 0, 0.08);
-            position: absolute;
-        }
-
-        /* Estes são os "gomos" da nuvem, criados com CSS */
-        .cloud:before, .cloud:after {
-            content: '';
-            position: absolute;
-            background: #fff;
-            border-radius: 50%;
-            /* Z-index negativo para os gomos ficarem ligeiramente atrás da base */
-            z-index: -1;
-        }
-
-        .cloud:before {
-            /* Gomo maior da esquerda */
-            width: 100px;
-            height: 100px;
-            top: -50px; /* Metade da sua altura para cima */
-            left: 20px;
-        }
-
-        .cloud:after {
-            /* Gomo maior da direita */
-            width: 120px;
-            height: 120px;
-            top: -65px; /* Metade da sua altura para cima */
-            right: 25px;
+            background: #f0f8ff; /* Fundo azul bebé suave */
+            padding: 40px 20px;
+            margin-top: 20px;
         }
         
-        /* Posicionamento de cada nuvem */
-        .cloud-a { top: 35px; left: 5%; transform: scale(0.8); }
-        .cloud-b { top: 14px; left: 30%; transform: scale(1.1); }
-        .cloud-c { top: 30px; right: 20%; transform: scale(1); }
-        .cloud-d { top: 60px; right: 4%; transform: scale(0.7); }
-        
-        .gifts-section {
-            color: #e06196;
-            font-size: 1.2em;
-            text-shadow: 0 1px 0 #fff;
-        }
         .gifts-section h3 {
             color: #6684e0;
             font-family: 'Pacifico', cursive;
             font-size: 1.7em;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             margin-top: 0;
             text-shadow: none;
         }
         .gifts-section p {
             margin: 0;
             color: #f05a99;
-            font-family: 'Pacifico', cursive;
             font-size: 1.3em;
             font-weight: bold;
             letter-spacing: 1px;
             line-height: 1.4;
+        }
+
+        /* --- ESTILOS PARA INTERATIVIDADE --- */
+        .animate-on-scroll {
+            opacity: 0; /* Começa invisível */
+        }
+        #contador-convidados {
+            margin: 15px 0 5px 0;
+            padding: 10px;
+            background-color: #f0f8ff;
+            border-radius: 8px;
+            font-size: 1.1em;
+            color: #0056b3;
+            text-align: center;
+            font-weight: 500;
+            transition: background-color 0.3s;
         }
     </style>
 </head>
 <body>
 
     <div class="banner">
-        <h1>Fulana ou Fulano?</h1>
-        <p>Venha descobrir connosco!</p>
+        <h1 class="animate-on-scroll">Menino ou Menina?</h1>
+        <p class="animate-on-scroll">Venha descobrir connosco!</p>
     </div>
 
-    <div class="container">
+    <div class="container animate-on-scroll">
         <h2>Você está convidado para o nosso Chá de Revelação!</h2>
         
-        <p class="info">
+        <p class="info animate-on-scroll">
             É com muita alegria que convidamos você para partilhar este momento tão especial nas nossas vidas.
-            Junte-se a <strong>Priscila e Renato</strong> para descobrir se o nosso bebê é um menino ou uma menina!
+            Junte-se a <strong>[Nome da Mãe] e [Nome do Pai]</strong> para descobrir se o nosso bebé é um menino ou uma menina!
         </p>
 
-        <p class="info">
+        <p class="info animate-on-scroll">
             <strong>Data:</strong> Sábado, 20 de Setembro de 2025<br>
             <strong>Hora:</strong> 16:00<br>
             <strong>Local:</strong> Salão de Festas da Vovó - Rua da Felicidade, 123
         </p>
 
-        <form id="rsvp-form">
+        <form id="rsvp-form" class="animate-on-scroll">
             <h2>Confirme a sua Presença</h2>
             <div class="form-group">
                 <label for="nome">O seu nome completo:</label>
@@ -254,50 +215,98 @@
                     </select>
                 </div>
             </div>
+
+            <div id="contador-convidados" class="animate-on-scroll">
+                <strong>Total:</strong> 1 pessoa
+            </div>
             
             <button type="submit" id="submitButton">Confirmar Presença</button>
             <div id="status" class="hidden"></div>
         </form>
 
-        <footer>
+        <footer class="animate-on-scroll">
             Sua presença é o nosso maior presente!
         </footer>
     </div>
 
-    <div class="bottom-section">
-        <div class="clouds-container">
-            <div class="cloud cloud-a"></div>
-            <div class="cloud cloud-b"></div>
-            <div class="cloud cloud-c"></div>
-            <div class="cloud cloud-d"></div>
-        </div>
+    <div class="bottom-section animate-on-scroll">
         <div class="gifts-section">
-            <h3>--- Sugestão de Presente ---</h3>
-            <p>Fraldas Descartáveis<br>P, M ou G</p>
+            <h3>Sugestão de Presente</h3>
+            <p>Fraldas Pampers ou MamyPoko<br>RN, P, M ou G</p>
         </div>
     </div>
-
 <script>
+    // --- LÓGICA DE INTERATIVIDADE ---
+    document.addEventListener("DOMContentLoaded", function() {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animação de entrada dos elementos
+        gsap.utils.toArray('.animate-on-scroll').forEach(element => {
+            gsap.fromTo(element, 
+                { opacity: 0, y: 50 }, 
+                { 
+                    opacity: 1, 
+                    y: 0, 
+                    duration: 0.8,
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 90%",
+                        toggleActions: "play none none none"
+                    }
+                }
+            );
+        });
+
+        const adultosSelect = document.getElementById('adultos');
+        const criancasSelect = document.getElementById('criancas');
+        const contadorDiv = document.getElementById('contador-convidados');
+
+        // Função para atualizar o contador
+        function atualizarContador() {
+            const numAdultos = parseInt(adultosSelect.value) || 0;
+            const numCriancas = parseInt(criancasSelect.value) || 0;
+            const total = numAdultos + numCriancas;
+            const pessoaTexto = total === 1 ? 'pessoa' : 'pessoas';
+            contadorDiv.innerHTML = `<strong>Total:</strong> ${total} ${pessoaTexto}`;
+        }
+
+        // Adiciona os eventos para atualizar o contador
+        adultosSelect.addEventListener('change', atualizarContador);
+        criancasSelect.addEventListener('change', atualizarContador);
+    });
+    
+
+    // --- LÓGICA DE ENVIO PARA A PLANILHA ---
     const form = document.getElementById('rsvp-form');
     const submitButton = document.getElementById('submitButton');
     const statusDiv = document.getElementById('status');
+
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-        
+
         const scriptURL = 'COLE_AQUI_A_URL_DO_SEU_APPS_SCRIPT';
         const formData = new FormData(form);
-        
+
         submitButton.disabled = true;
         submitButton.textContent = 'Aguarde...';
-        
+
         fetch(scriptURL, { method: 'POST', body: formData })
             .then(response => response.json())
             .then(data => {
                 if (data.result === 'success') {
+                    // Lança o confete!
+                    confetti({
+                        particleCount: 150,
+                        spread: 180,
+                        origin: { y: 0.6 }
+                    });
+
                     statusDiv.classList.remove('hidden', 'status-error');
                     statusDiv.classList.add('status-success');
                     statusDiv.textContent = 'Presença confirmada! Obrigado!';
                     form.reset();
+                    // Reseta o contador para o valor inicial
+                    document.getElementById('contador-convidados').innerHTML = '<strong>Total:</strong> 1 pessoa';
                 } else {
                     throw new Error(data.message || 'Ocorreu um erro.');
                 }
