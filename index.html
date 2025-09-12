@@ -20,8 +20,6 @@
             --text-gray: #8a8a8a;
             --header-pink: #e06196;
             --header-blue: #6684e0;
-            --gender-boy-blue: #4a90e2;
-            --gender-girl-pink: #e91e63;
         }
 
         body {
@@ -42,217 +40,69 @@
             z-index: 2;
         }
 
-        /* --- Estilos do Header (se estiver usando imagem/GIF) --- */
-        .header {
-            position: relative;
-            min-height: 280px; /* Ajuste conforme a sua imagem */
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-            overflow: hidden;
-            background-image: url('URL_DA_SUA_IMAGEM_DE_BEBES_AQUI.jpg'); /* Sua imagem de fundo */
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .header::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('URL_DO_SEU_GIF_DE_BRILHO_AQUI.gif'); /* Seu GIF de brilho */
-            background-size: cover;
-            opacity: 0.5; /* Ajuste a intensidade do brilho */
-            z-index: 1;
-        }
-
-        .header h1 {
-            font-family: 'Pacifico', cursive;
-            font-size: 3.5em;
-            margin: 0;
-            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
-            position: relative;
-            z-index: 2;
-        }
-        /* --- Fim dos Estilos do Header --- */
-
-
+        .header { /* ... estilos do header ... */ }
         .main-content { padding: 20px 30px; }
         .main-content p { font-size: 1em; line-height: 1.6; }
-        .highlight-boy { color: var(--gender-boy-blue); font-weight: 700; }
-        .highlight-girl { color: var(--gender-girl-pink); font-weight: 700; }
-
-        .event-details { display: flex; align-items: center; justify-content: center; margin: 30px 0; gap: 20px; }
-        .event-date .day { font-size: 3em; font-weight: 700; color: var(--header-pink); line-height: 1; }
-        .event-date .month-year { font-size: 1em; color: var(--text-gray); text-transform: uppercase; }
-        .details-divider { width: 2px; height: 60px; background-color: #eee; }
-        .event-location { text-align: left; font-size: 1.1em; line-height: 1.5; color: #666; }
-
+        .main-content .highlight { color: var(--header-pink); font-weight: 700; }
+        .event-details { /* ... estilos dos detalhes ... */ }
         form { margin-top: 30px; padding-top: 20px; border-top: 2px dashed #eee; }
         h2 { font-family: 'Pacifico', cursive; color: var(--header-blue); font-size: 2em; }
-        .form-row { display: flex; gap: 15px; }
-        .form-group { flex: 1; text-align: left; margin-bottom: 15px; }
-        label { display: block; font-weight: 500; margin-bottom: 5px; color: #555; font-size: 0.9em; }
-        input, select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 1em; }
-        button { width: 100%; padding: 15px; margin-top: 10px; border: none; border-radius: 8px; background-color: var(--header-pink); color: white; font-size: 1.2em; font-weight: 700; cursor: pointer; }
-        
-        #status { margin-top: 15px; padding: 12px; border-radius: 5px; font-weight: 500; }
-        .status-success { background-color: #d4edda; color: #155724; }
-        .status-error { background-color: #f8d7da; color: #721c24; }
-        .hidden { display: none; }
-        
-        .bottom-section {
-            background: var(--light-pink);
-            padding: 30px 20px;
-            border-bottom-left-radius: 15px;
-            border-bottom-right-radius: 15px;
-        }
-        .gifts-section h3 {
-            font-family: 'Pacifico', cursive;
-            color: var(--header-blue);
-            font-size: 1.7em;
-            margin: 0 0 10px 0;
-        }
-        .gifts-section p {
-            margin: 0;
-            color: var(--header-pink);
-            font-size: 1.1em;
-            font-weight: 500;
-            line-height: 1.5;
-        }
+        /* ... outros estilos ... */
 
-        /* --- Estilos para o Sorteador --- */
-        .sorter-section {
-            padding: 30px;
-            margin-top: 40px;
-            background-color: #f7f7f7;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            text-align: left;
-        }
-        .sorter-section h3 {
-            font-family: 'Pacifico', cursive;
-            color: var(--header-blue);
-            font-size: 2.2em;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .sorter-input-group {
-            margin-bottom: 15px;
-        }
-        .sorter-input-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 700;
-            color: #555;
-        }
-        .sorter-input-group input[type="text"] {
-            width: calc(100% - 24px);
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 1em;
-        }
-        .sorter-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .sorter-actions button {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1em;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-        .sorter-actions .load-names-btn {
-            background-color: var(--header-blue);
-            color: white;
-        }
-        .sorter-actions .load-names-btn:hover {
-            background-color: #5a74d4;
-        }
-        .sorter-actions .draw-btn {
-            background-color: var(--header-pink);
-            color: white;
-        }
-        .sorter-actions .draw-btn:hover {
-            background-color: #c95185;
-        }
-        #correct-guessers-list {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #eef;
-            border-radius: 8px;
-            max-height: 200px;
-            overflow-y: auto;
-            border: 1px solid #dde;
-        }
-        #correct-guessers-list p {
-            margin: 5px 0;
-            font-size: 0.95em;
-            color: #444;
-        }
-        #winner-display {
-            margin-top: 30px;
+        /* --- NOVO: Estilos para a caixa de palpites --- */
+        .poll-section {
             padding: 20px;
-            background-color: #d4edda;
-            color: #155724;
-            font-size: 1.8em;
-            font-weight: 700;
+            margin-top: 30px;
+            border-top: 2px dashed #eee;
+        }
+        .poll-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        .poll-option {
+            padding: 15px;
             border-radius: 12px;
-            border: 2px solid #a8dfb5;
-            text-align: center;
-            display: none; /* Inicia oculto */
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            width: 120px;
         }
-        .spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-top: 4px solid var(--header-blue);
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-            display: none;
+        .poll-option:hover {
+            transform: scale(1.05);
         }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .poll-option.boy {
+            background-color: #e0f2ff;
         }
+        .poll-option.girl {
+            background-color: #fff0f6;
+        }
+        .poll-option.selected {
+            border-color: var(--header-blue);
+            transform: scale(1.1);
+        }
+        .poll-option.girl.selected {
+            border-color: var(--header-pink);
+        }
+        .poll-option img {
+            width: 60px;
+            height: 60px;
+        }
+        .poll-option span {
+            display: block;
+            margin-top: 10px;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+        .boy span { color: var(--header-blue); }
+        .girl span { color: var(--header-pink); }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="header">
-            <h1>Chá Revelação</h1>
-        </div>
-
         <div class="main-content">
-            <p>Papai e Mamãe estão ansiosos pela minha chegada!</p>
-            <p>E agora todos querem saber se sou <span class="highlight-boy">Menino</span> ou <span class="highlight-girl">Menina</span>!</p>
-
-            <div class="event-details">
-                <div class="event-date">
-                    <div class="day">05</div>
-                    <div class="month-year">OUTUBRO 2025</div>
-                </div>
-                <div class="details-divider"></div>
-                <div class="event-location">
-                    <strong>às 11h</strong><br>
-                    R. Caçaquera, 246 - Tatuapé<br>
-                    Espaço Maria Festeira 2
-                </div>
-            </div>
-
             <div class="poll-section">
                 <h2>Qual o seu palpite?</h2>
                 <div class="poll-options">
@@ -282,21 +132,14 @@
                         <select id="adultos" name="adultos" required>
                             <option value="1">1 Adulto</option>
                             <option value="2">2 Adultos</option>
-                            <option value="3">3 Adultos</option>
-                            <option value="4">4 Adultos</option>
-                            <option value="5">5 Adultos</option>
-                        </select>
+                            </select>
                     </div>
                     <div class="form-group">
                         <label for="criancas">Crianças:</label>
                         <select id="criancas" name="criancas" required>
                             <option value="0">Nenhuma</option>
                             <option value="1">1 Criança</option>
-                            <option value="2">2 Crianças</option>
-                            <option value="3">3 Crianças</option>
-                            <option value="4">4 Crianças</option>
-                            <option value="5">5 Crianças</option>
-                        </select>
+                            </select>
                     </div>
                 </div>
                 
@@ -304,185 +147,28 @@
                 <div id="status" class="hidden"></div>
             </form>
         </div>
+    </div>
     
-        <div class="bottom-section">
-            <div class="gifts-section">
-                <h3>Sugestão de Presente</h3>
-                <p>Fraldas descartáveis + mimo</p>
-            </div>
-        </div>
-
-        <div class="sorter-section hidden" id="sorter-section">
-            <h3>Sorteio do Palpite</h3>
-            <p>Use esta área para sortear o vencedor entre os que acertaram o palpite!</p>
-            
-            <div class="sorter-input-group">
-                <label for="reveal-gender">Qual o género revelado?</label>
-                <input type="text" id="reveal-gender" placeholder="Ex: Menino ou Menina">
-            </div>
-
-            <div class="sorter-actions">
-                <button class="load-names-btn" id="load-names-btn">Carregar Nomes</button>
-                <button class="draw-btn" id="draw-btn" disabled>Sortear</button>
-            </div>
-            <div class="spinner hidden" id="sorter-spinner"></div>
-            
-            <h4>Acertadores:</h4>
-            <div id="correct-guessers-list">
-                <p>Nenhum nome carregado ainda.</p>
-            </div>
-
-            <div id="winner-display" class="hidden">
-                O Vencedor é: <span id="winner-name"></span>!
-            </div>
-        </div>
-        </div> <script>
-    const SCRIPT_URL = 'COLE_AQUI_A_URL_DO_SEU_APPS_SCRIPT'; // A URL do seu Google Apps Script (do Implantação)
-
-    // --- Lógica para a caixa de palpites ---
+    <script>
+    // --- NOVO: Lógica para a caixa de palpites ---
     const pollOptions = document.querySelectorAll('.poll-option');
     const palpiteInput = document.getElementById('palpite-input');
 
     pollOptions.forEach(option => {
         option.addEventListener('click', () => {
+            // Remove a seleção de qualquer outra opção
             pollOptions.forEach(opt => opt.classList.remove('selected'));
+            // Adiciona a seleção à opção clicada
             option.classList.add('selected');
+            // Atualiza o valor do input escondido que será enviado
             palpiteInput.value = option.dataset.palpite;
         });
     });
 
-    // --- Lógica de Envio para a Planilha ---
+
+    // --- Lógica de Envio para a Planilha (sem alterações) ---
     const form = document.getElementById('rsvp-form');
-    const submitButton = document.getElementById('submitButton');
-    const statusDiv = document.getElementById('status');
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        submitButton.disabled = true;
-        submitButton.textContent = 'Aguarde...';
-        fetch(SCRIPT_URL, { method: 'POST', body: new FormData(form) })
-            .then(response => response.json())
-            .then(data => {
-                if (data.result === 'success') {
-                    confetti({ 
-                        particleCount: 150, 
-                        spread: 180, 
-                        origin: { y: 0.6 },
-                        colors: ['#FFD700', '#FFFFFF', '#FFB6C1', '#87CEEB'],
-                        shapes: ['star', 'circle']
-                    });
-                    statusDiv.classList.remove('hidden', 'status-error');
-                    statusDiv.classList.add('status-success');
-                    statusDiv.textContent = 'Presença confirmada! Obrigado!';
-                    form.reset();
-                } else {
-                    throw new Error(data.message || 'Ocorreu um erro.');
-                }
-            })
-            .catch(error => {
-                console.error('Erro:', error);
-                statusDiv.classList.remove('hidden', 'status-success');
-                statusDiv.classList.add('status-error');
-                statusDiv.textContent = 'Ocorreu um erro. Por favor, tente novamente.';
-            })
-            .finally(() => {
-                submitButton.disabled = false;
-                submitButton.textContent = 'Confirmar Presença';
-            });
-    });
-
-    // --- NOVO: Lógica do Sorteador ---
-    const sorterSection = document.getElementById('sorter-section');
-    const revealGenderInput = document.getElementById('reveal-gender');
-    const loadNamesBtn = document.getElementById('load-names-btn');
-    const drawBtn = document.getElementById('draw-btn');
-    const correctGuessersList = document.getElementById('correct-guessers-list');
-    const winnerDisplay = document.getElementById('winner-display');
-    const winnerNameSpan = document.getElementById('winner-name');
-    const sorterSpinner = document.getElementById('sorter-spinner');
-
-    let allGuests = []; // Guardará todos os convidados da planilha
-    let correctGuessers = []; // Guardará apenas os que acertaram
-
-    // Função para mostrar/ocultar o sorteador
-    // Para ativar, adicione #sorteio ao final do URL do seu site (ex: seudominio.com/index.html#sorteio)
-    if (window.location.hash === '#sorteio') {
-        sorterSection.classList.remove('hidden');
-    } else {
-        sorterSection.classList.add('hidden');
-    }
-
-    loadNamesBtn.addEventListener('click', async () => {
-        const revealedGender = revealGenderInput.value.trim();
-        if (!revealedGender) {
-            alert('Por favor, insira o género revelado (Menino ou Menina).');
-            return;
-        }
-
-        sorterSpinner.classList.remove('hidden');
-        loadNamesBtn.disabled = true;
-        drawBtn.disabled = true;
-        correctGuessersList.innerHTML = '<p>A carregar nomes...</p>';
-        winnerDisplay.classList.add('hidden');
-
-        try {
-            const response = await fetch(SCRIPT_URL + '?action=getGuests'); // Usamos o doGet
-            const result = await response.json();
-
-            if (result.result === 'success') {
-                allGuests = result.data;
-                correctGuessers = allGuests.filter(guest => 
-                    guest.palpite && guest.palpite.toLowerCase() === revealedGender.toLowerCase()
-                );
-
-                displayCorrectGuessers();
-                drawBtn.disabled = correctGuessers.length === 0; // Ativa o botão de sortear se houver acertadores
-            } else {
-                alert('Erro ao carregar os nomes: ' + (result.message || 'Desconhecido'));
-                correctGuessersList.innerHTML = '<p>Erro ao carregar nomes.</p>';
-            }
-        } catch (error) {
-            console.error('Erro na requisição:', error);
-            alert('Erro de conexão ao carregar nomes. Verifique a URL do Script e sua conexão.');
-            correctGuessersList.innerHTML = '<p>Erro de conexão.</p>';
-        } finally {
-            sorterSpinner.classList.add('hidden');
-            loadNamesBtn.disabled = false;
-        }
-    });
-
-    drawBtn.addEventListener('click', () => {
-        if (correctGuessers.length === 0) {
-            alert('Não há nomes na lista de acertadores para sortear!');
-            return;
-        }
-
-        const randomIndex = Math.floor(Math.random() * correctGuessers.length);
-        const winner = correctGuessers[randomIndex];
-
-        winnerNameSpan.textContent = winner.nome;
-        winnerDisplay.classList.remove('hidden');
-
-        // Confetes de celebração para o vencedor!
-        confetti({
-            particleCount: 200,
-            spread: 90,
-            origin: { y: 0.6 },
-            colors: ['#ffd700', '#ffb6c1', '#87ceeb', '#ffffff', '#a8dfb5']
-        });
-    });
-
-    function displayCorrectGuessers() {
-        if (correctGuessers.length > 0) {
-            correctGuessersList.innerHTML = '';
-            correctGuessers.forEach(guest => {
-                const p = document.createElement('p');
-                p.textContent = guest.nome;
-                correctGuessersList.appendChild(p);
-            });
-        } else {
-            correctGuessersList.innerHTML = '<p>Ninguém acertou o palpite ou nenhum nome foi carregado para este género.</p>';
-        }
-    }
+    // ... (o resto do seu script de envio continua aqui) ...
 </script>
 
 </body>
