@@ -133,6 +133,23 @@
         #winner-display { margin-top: 30px; padding: 20px; background-color: #d4edda; color: #155724; font-size: 1.5em; font-weight: 700; border-radius: 12px; text-align: center; }
         .spinner { border: 4px solid rgba(0, 0, 0, 0.1); border-top: 4px solid var(--header-blue); border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; margin: 20px auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+         /* --- ESTILOS ADICIONADOS PARA A CONTAGEM REGRESSIVA --- */
+        #countdown-display {
+            font-size: 5em;
+            font-weight: 700;
+            color: var(--header-blue);
+            margin: 20px 0;
+            text-align: center;
+        }
+        .pulse {
+            animation: pulse-animation 1s ease-in-out;
+        }
+        @keyframes pulse-animation {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
     </style>
 </head>
 <body>
