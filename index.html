@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chá de Revelação - [Nome da Mãe] e [Nome do Pai]</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
@@ -16,69 +16,74 @@
             --soft-pink: #ffafcc;
             --light-pink: #fff0f6;
             --soft-blue: #a2d2ff;
+            --background-base: #f8faff;
             --text-gray: #8a8a8a;
             --header-pink: #e06196;
             --header-blue: #6684e0;
             --gender-boy-blue: #4a90e2;
-            --gender-girl-pink: #e06196;
+            --gender-girl-pink: #e91e63;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
-            padding: 40px 20px;
-            color: #333;
+            padding: 0;
+            background-color: var(--background-base);
+            color: var(--text-gray);
             text-align: center;
-            background-image: url('urso.jpg');
-            background-size: cover;
-            background-position: center center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
         }
 
         .container {
             max-width: 450px;
             margin: 0 auto;
-            background-color: rgba(255, 255, 255, 0.95); 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-radius: 15px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: relative;
+            z-index: 2;
         }
 
+        /* --- Estilos do Header (se estiver usando imagem/GIF) --- */
         .header {
-            background: linear-gradient(135deg, var(--soft-blue), var(--soft-pink));
-            padding: 40px 20px;
+            position: relative;
+            min-height: 280px; /* Ajuste conforme a sua imagem */
             color: white;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-            min-height: auto;
-            position: relative; /* Essencial para o efeito */
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden; /* Garante que as partículas não saiam */
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            overflow: hidden;
+            background-image: url('URL_DA_SUA_IMAGEM_DE_BEBES_AQUI.jpg'); /* Sua imagem de fundo */
+            background-size: cover;
+            background-position: center;
         }
         
-        /* NOVO: CSS para o palco das partículas */
-        #particles-js {
+        .header::after {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1; /* Fica abaixo do texto */
+            right: 0;
+            bottom: 0;
+            background-image: url('URL_DO_SEU_GIF_DE_BRILHO_AQUI.gif'); /* Seu GIF de brilho */
+            background-size: cover;
+            opacity: 0.5; /* Ajuste a intensidade do brilho */
+            z-index: 1;
         }
 
         .header h1 {
             font-family: 'Pacifico', cursive;
-            font-size: 3.5em; 
+            font-size: 3.5em;
             margin: 0;
-            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6);
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
             position: relative;
-            z-index: 2; /* Garante que o texto fique por cima das partículas */
+            z-index: 2;
         }
+        /* --- Fim dos Estilos do Header --- */
+
 
         .main-content { padding: 20px 30px; }
-        .main-content p { font-size: 1em; line-height: 1.6; color: var(--text-gray); }
+        .main-content p { font-size: 1em; line-height: 1.6; }
         .highlight-boy { color: var(--gender-boy-blue); font-weight: 700; }
         .highlight-girl { color: var(--gender-girl-pink); font-weight: 700; }
 
@@ -120,13 +125,114 @@
             font-weight: 500;
             line-height: 1.5;
         }
+
+        /* --- Estilos para o Sorteador --- */
+        .sorter-section {
+            padding: 30px;
+            margin-top: 40px;
+            background-color: #f7f7f7;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+        .sorter-section h3 {
+            font-family: 'Pacifico', cursive;
+            color: var(--header-blue);
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .sorter-input-group {
+            margin-bottom: 15px;
+        }
+        .sorter-input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: #555;
+        }
+        .sorter-input-group input[type="text"] {
+            width: calc(100% - 24px);
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+        .sorter-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .sorter-actions button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .sorter-actions .load-names-btn {
+            background-color: var(--header-blue);
+            color: white;
+        }
+        .sorter-actions .load-names-btn:hover {
+            background-color: #5a74d4;
+        }
+        .sorter-actions .draw-btn {
+            background-color: var(--header-pink);
+            color: white;
+        }
+        .sorter-actions .draw-btn:hover {
+            background-color: #c95185;
+        }
+        #correct-guessers-list {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #eef;
+            border-radius: 8px;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #dde;
+        }
+        #correct-guessers-list p {
+            margin: 5px 0;
+            font-size: 0.95em;
+            color: #444;
+        }
+        #winner-display {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #d4edda;
+            color: #155724;
+            font-size: 1.8em;
+            font-weight: 700;
+            border-radius: 12px;
+            border: 2px solid #a8dfb5;
+            text-align: center;
+            display: none; /* Inicia oculto */
+        }
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-top: 4px solid var(--header-blue);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+            display: none;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
         <div class="header">
-            <div id="particles-js"></div>
             <h1>Chá Revelação</h1>
         </div>
 
@@ -147,8 +253,24 @@
                 </div>
             </div>
 
+            <div class="poll-section">
+                <h2>Qual o seu palpite?</h2>
+                <div class="poll-options">
+                    <div class="poll-option boy" data-palpite="Menino">
+                        <img src="https://image.flaticon.com/icons/png/512/3503/3503201.png" alt="Ícone de menino">
+                        <span>Menino</span>
+                    </div>
+                    <div class="poll-option girl" data-palpite="Menina">
+                        <img src="https://image.flaticon.com/icons/png/512/3503/3503200.png" alt="Ícone de menina">
+                        <span>Menina</span>
+                    </div>
+                </div>
+            </div>
+
             <form id="rsvp-form">
                 <h2>Confirme a sua Presença</h2>
+                <input type="hidden" id="palpite-input" name="palpite">
+                
                 <div class="form-group">
                     <label for="nome">O seu nome completo:</label>
                     <input type="text" id="nome" name="nome" required>
@@ -163,11 +285,6 @@
                             <option value="3">3 Adultos</option>
                             <option value="4">4 Adultos</option>
                             <option value="5">5 Adultos</option>
-                            <option value="5">6 Adultos</option>
-                            <option value="5">7 Adultos</option>
-                            <option value="5">8 Adultos</option>
-                            <option value="5">9 Adultos</option>
-                            <option value="5">10 Adultos</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -179,11 +296,6 @@
                             <option value="3">3 Crianças</option>
                             <option value="4">4 Crianças</option>
                             <option value="5">5 Crianças</option>
-                            <option value="5">6 Crianças</option>
-                            <option value="5">7 Crianças</option>
-                            <option value="5">8 Crianças</option>
-                            <option value="5">9 Crianças</option>
-                            <option value="5">10 Crianças</option>
                         </select>
                     </div>
                 </div>
@@ -196,45 +308,58 @@
         <div class="bottom-section">
             <div class="gifts-section">
                 <h3>Sugestão de Presente</h3>
-                <p>Fraldas P, M ou G + Mimo</p>
-                <h5>*Obs: Homens levar o que for beber*</h5>
+                <p>Fraldas descartáveis + mimo</p>
             </div>
         </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        <div class="sorter-section hidden" id="sorter-section">
+            <h3>Sorteio do Palpite</h3>
+            <p>Use esta área para sortear o vencedor entre os que acertaram o palpite!</p>
+            
+            <div class="sorter-input-group">
+                <label for="reveal-gender">Qual o género revelado?</label>
+                <input type="text" id="reveal-gender" placeholder="Ex: Menino ou Menina">
+            </div>
 
-<script>
-    // NOVO: Configuração e inicialização do efeito de partículas
-    particlesJS('particles-js', {
-        "particles": {
-            "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-            "color": { "value": "#ffffff" },
-            "shape": { "type": "circle" },
-            "opacity": { "value": 0.5, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
-            "size": { "value": 3, "random": true, "anim": { "enable": false } },
-            "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 },
-            "move": { "enable": true, "speed": 2, "direction": "none", "out_mode": "out" }
-        },
-        "interactivity": {
-            "detect_on": "canvas",
-            "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" } },
-            "modes": { "repulse": { "distance": 100, "duration": 0.4 }, "push": { "particles_nb": 4 } }
-        },
-        "retina_detect": true
+            <div class="sorter-actions">
+                <button class="load-names-btn" id="load-names-btn">Carregar Nomes</button>
+                <button class="draw-btn" id="draw-btn" disabled>Sortear</button>
+            </div>
+            <div class="spinner hidden" id="sorter-spinner"></div>
+            
+            <h4>Acertadores:</h4>
+            <div id="correct-guessers-list">
+                <p>Nenhum nome carregado ainda.</p>
+            </div>
+
+            <div id="winner-display" class="hidden">
+                O Vencedor é: <span id="winner-name"></span>!
+            </div>
+        </div>
+        </div> <script>
+    const SCRIPT_URL = 'COLE_AQUI_A_URL_DO_SEU_APPS_SCRIPT'; // A URL do seu Google Apps Script (do Implantação)
+
+    // --- Lógica para a caixa de palpites ---
+    const pollOptions = document.querySelectorAll('.poll-option');
+    const palpiteInput = document.getElementById('palpite-input');
+
+    pollOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            pollOptions.forEach(opt => opt.classList.remove('selected'));
+            option.classList.add('selected');
+            palpiteInput.value = option.dataset.palpite;
+        });
     });
 
-    // --- LÓGICA DE ENVIO PARA A PLANILHA (existente) ---
+    // --- Lógica de Envio para a Planilha ---
     const form = document.getElementById('rsvp-form');
     const submitButton = document.getElementById('submitButton');
     const statusDiv = document.getElementById('status');
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzLgHs6bGbxicW3guiiDV8-0m9mNCtWXzfJLdVkC0EooNYk5BsVvhr0wm171IOxRYBM/exec';
-        const formData = new FormData(form);
         submitButton.disabled = true;
         submitButton.textContent = 'Aguarde...';
-        fetch(scriptURL, { method: 'POST', body: formData })
+        fetch(SCRIPT_URL, { method: 'POST', body: new FormData(form) })
             .then(response => response.json())
             .then(data => {
                 if (data.result === 'success') {
@@ -264,8 +389,101 @@
                 submitButton.textContent = 'Confirmar Presença';
             });
     });
+
+    // --- NOVO: Lógica do Sorteador ---
+    const sorterSection = document.getElementById('sorter-section');
+    const revealGenderInput = document.getElementById('reveal-gender');
+    const loadNamesBtn = document.getElementById('load-names-btn');
+    const drawBtn = document.getElementById('draw-btn');
+    const correctGuessersList = document.getElementById('correct-guessers-list');
+    const winnerDisplay = document.getElementById('winner-display');
+    const winnerNameSpan = document.getElementById('winner-name');
+    const sorterSpinner = document.getElementById('sorter-spinner');
+
+    let allGuests = []; // Guardará todos os convidados da planilha
+    let correctGuessers = []; // Guardará apenas os que acertaram
+
+    // Função para mostrar/ocultar o sorteador
+    // Para ativar, adicione #sorteio ao final do URL do seu site (ex: seudominio.com/index.html#sorteio)
+    if (window.location.hash === '#sorteio') {
+        sorterSection.classList.remove('hidden');
+    } else {
+        sorterSection.classList.add('hidden');
+    }
+
+    loadNamesBtn.addEventListener('click', async () => {
+        const revealedGender = revealGenderInput.value.trim();
+        if (!revealedGender) {
+            alert('Por favor, insira o género revelado (Menino ou Menina).');
+            return;
+        }
+
+        sorterSpinner.classList.remove('hidden');
+        loadNamesBtn.disabled = true;
+        drawBtn.disabled = true;
+        correctGuessersList.innerHTML = '<p>A carregar nomes...</p>';
+        winnerDisplay.classList.add('hidden');
+
+        try {
+            const response = await fetch(SCRIPT_URL + '?action=getGuests'); // Usamos o doGet
+            const result = await response.json();
+
+            if (result.result === 'success') {
+                allGuests = result.data;
+                correctGuessers = allGuests.filter(guest => 
+                    guest.palpite && guest.palpite.toLowerCase() === revealedGender.toLowerCase()
+                );
+
+                displayCorrectGuessers();
+                drawBtn.disabled = correctGuessers.length === 0; // Ativa o botão de sortear se houver acertadores
+            } else {
+                alert('Erro ao carregar os nomes: ' + (result.message || 'Desconhecido'));
+                correctGuessersList.innerHTML = '<p>Erro ao carregar nomes.</p>';
+            }
+        } catch (error) {
+            console.error('Erro na requisição:', error);
+            alert('Erro de conexão ao carregar nomes. Verifique a URL do Script e sua conexão.');
+            correctGuessersList.innerHTML = '<p>Erro de conexão.</p>';
+        } finally {
+            sorterSpinner.classList.add('hidden');
+            loadNamesBtn.disabled = false;
+        }
+    });
+
+    drawBtn.addEventListener('click', () => {
+        if (correctGuessers.length === 0) {
+            alert('Não há nomes na lista de acertadores para sortear!');
+            return;
+        }
+
+        const randomIndex = Math.floor(Math.random() * correctGuessers.length);
+        const winner = correctGuessers[randomIndex];
+
+        winnerNameSpan.textContent = winner.nome;
+        winnerDisplay.classList.remove('hidden');
+
+        // Confetes de celebração para o vencedor!
+        confetti({
+            particleCount: 200,
+            spread: 90,
+            origin: { y: 0.6 },
+            colors: ['#ffd700', '#ffb6c1', '#87ceeb', '#ffffff', '#a8dfb5']
+        });
+    });
+
+    function displayCorrectGuessers() {
+        if (correctGuessers.length > 0) {
+            correctGuessersList.innerHTML = '';
+            correctGuessers.forEach(guest => {
+                const p = document.createElement('p');
+                p.textContent = guest.nome;
+                correctGuessersList.appendChild(p);
+            });
+        } else {
+            correctGuessersList.innerHTML = '<p>Ninguém acertou o palpite ou nenhum nome foi carregado para este género.</p>';
+        }
+    }
 </script>
 
 </body>
 </html>
-
