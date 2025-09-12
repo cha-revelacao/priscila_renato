@@ -36,20 +36,53 @@
             margin: 0 auto;
             background: white;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-radius: 15px; /* Adicionado de volta para arredondamento */
+            overflow: hidden; /* Importante para garantir o arredondamento */
         }
 
+        /* --- Estilos do Header (COM IMAGEM DE FUNDO E SOBREPOSIÇÃO DE GIF) --- */
         .header {
-            background: linear-gradient(135deg, var(--soft-blue), var(--soft-pink));
-            padding: 40px 20px;
+            position: relative;
+            min-height: 280px; /* Ajuste esta altura conforme a sua imagem dos bebés */
             color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            overflow: hidden; 
+            
+            /* A sua imagem dos bebés entra aqui como fundo */
+            background-image: url('urso.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Sobreposição de brilho (GIF) */
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            
+            /* O seu GIF de brilho entra aqui */
+            background-image: url('URL_DO_SEU_GIF_DE_BRILHO_AQUI.gif');
+            background-size: cover;
+            opacity: 0.5; /* Ajuste a intensidade do brilho aqui (0 a 1) */
+            z-index: 1; /* Fica acima da imagem de fundo, mas abaixo do texto */
         }
 
         .header h1 {
             font-family: 'Pacifico', cursive;
-            font-size: 3.2em;
+            font-size: 3.5em; /* Aumentado um pouco para destaque */
             margin: 0;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7); /* Sombra mais forte para garantir a leitura */
+            position: relative;
+            z-index: 2; /* Garante que o texto fique por cima de tudo */
         }
+        /* --- Fim dos Estilos do Header --- */
 
         .main-content { padding: 20px 30px; }
         .main-content p { font-size: 1em; line-height: 1.6; }
@@ -78,6 +111,8 @@
         .bottom-section {
             background: var(--light-pink);
             padding: 30px 20px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
         }
         .gifts-section h3 {
             font-family: 'Pacifico', cursive;
@@ -126,6 +161,8 @@
             padding: 30px;
             margin-top: 40px;
             background-color: #f7f7f7;
+            border-radius: 0 0 15px 15px; /* Arredondamento apenas na parte inferior */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             text-align: left;
         }
         .sorter-section h3 {
@@ -137,7 +174,7 @@
         }
         .sorter-input-group { margin-bottom: 15px; }
         .sorter-input-group label { display: block; margin-bottom: 8px; font-weight: 700; color: #555; }
-        .sorter-input-group input[type="text"] { width: calc(100% - 24px); padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 1em; }
+        .sorter-input-group input[type="text"] { width: calc(100% - 24px); padding: 12px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; font-size: 1em; }
         .sorter-actions { display: flex; gap: 10px; margin-top: 20px; }
         .sorter-actions button { flex: 1; padding: 12px; border: none; border-radius: 8px; font-size: 1em; font-weight: 700; cursor: pointer; transition: background-color 0.2s ease; }
         .sorter-actions .load-names-btn { background-color: var(--header-blue); color: white; }
@@ -169,7 +206,7 @@
                 <div class="event-location">
                     <strong>às 11h</strong><br>
                     R. Caçaquera, 246 - Tatuapé<br>
-                    Maria Festeira Unidade 2
+                    Espaço Maria Festeira 2
                 </div>
             </div>
 
@@ -301,7 +338,7 @@
             })
             .catch(error => {
                 console.error('Erro:', error);
-                statusDiv.classList.remove('hidden', 'status-success');
+                statusDiv.classList.remove('hidden', 'status-error');
                 statusDiv.classList.add('status-error');
                 statusDiv.textContent = 'Ocorreu um erro. Por favor, tente novamente.';
             })
@@ -382,24 +419,4 @@
         confetti({
             particleCount: 200,
             spread: 90,
-            origin: { y: 0.6 },
-            colors: ['#ffd700', '#ffb6c1', '#87ceeb', '#ffffff', '#a8dfb5']
-        });
-    });
-
-    function displayCorrectGuessers() {
-        if (correctGuessers.length > 0) {
-            correctGuessersList.innerHTML = '';
-            correctGuessers.forEach(guest => {
-                const p = document.createElement('p');
-                p.textContent = guest.nome;
-                correctGuessersList.appendChild(p);
-            });
-        } else {
-            correctGuessersList.innerHTML = '<p>Ninguém acertou o palpite.</p>';
-        }
-    }
-</script>
-
-</body>
-</html>
+            origin
