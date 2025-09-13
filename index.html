@@ -41,17 +41,50 @@
             border-radius: 15px;
             overflow: hidden;
         }
+
+        /* --- CORREÇÃO APLICADA AQUI NO CABEÇALHO (HEADER) --- */
         .header {
-            background: linear-gradient(135deg, var(--soft-blue), var(--soft-pink));
+            position: relative;
             padding: 40px 20px;
             color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 180px; /* Sua altura preferida para a imagem de fundo */
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            
+            /* Sua imagem de banner original */
+            background-image: url('urso 1.jpg'); 
+            background-size: cover;
+            background-position: center;
         }
+        
+        /* Sobreposição escura para dar contraste ao texto branco */
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.25); /* Escurecimento de 25% */
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            z-index: 1;
+        }
+
         .header h1 {
             font-family: 'Pacifico', cursive;
             font-size: 3.2em;
             margin: 0;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+            position: relative; /* Para ficar acima da sobreposição */
+            z-index: 2;
         }
+        /* --- FIM DA CORREÇÃO NO CABEÇALHO --- */
+
+
         .main-content { padding: 20px 30px; }
         .main-content p { font-size: 1em; line-height: 1.6; color: var(--text-gray); }
         .highlight-boy { color: var(--soft-blue); font-weight: 700; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
@@ -101,7 +134,7 @@
         .spinner { border: 4px solid rgba(0, 0, 0, 0.1); border-top: 4px solid var(--header-blue); border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; margin: 20px auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* --- NOVO: ESTILOS PARA A CONTAGEM REGRESSIVA --- */
+        /* --- ESTILOS PARA A CONTAGEM REGRESSIVA --- */
         #countdown-display {
             font-size: 5em;
             font-weight: 700;
@@ -273,7 +306,6 @@
     const winnerNameSpan = document.getElementById('winner-name');
     const sorterSpinner = document.getElementById('sorter-spinner');
     
-    // NOVO: Constante para o elemento da contagem regressiva
     const countdownDisplay = document.getElementById('countdown-display');
 
     let correctGuessers = [];
@@ -316,7 +348,6 @@
         }
     });
 
-    // LÓGICA DO BOTÃO "SORTEAR!" ATUALIZADA
     drawBtn.addEventListener('click', () => {
         if (correctGuessers.length === 0) return;
 
